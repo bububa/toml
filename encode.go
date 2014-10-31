@@ -392,6 +392,7 @@ func tomlTypeOfGo(rv reflect.Value) tomlType {
 	default:
 		panic("unexpected reflect.Kind: " + rv.Kind().String())
 	}
+	return nil
 }
 
 // tomlArrayType returns the element type of a TOML array. The type returned
@@ -468,6 +469,7 @@ func eindirect(v reflect.Value) reflect.Value {
 	default:
 		return v
 	}
+	return v
 }
 
 func isNil(rv reflect.Value) bool {
@@ -477,6 +479,7 @@ func isNil(rv reflect.Value) bool {
 	default:
 		return false
 	}
+	return false
 }
 
 func panicIfInvalidKey(key Key, hash bool) {

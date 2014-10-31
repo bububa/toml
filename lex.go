@@ -83,6 +83,7 @@ func (lx *lexer) nextItem() item {
 			lx.state = lx.state(lx)
 		}
 	}
+	return item{}
 }
 
 func lex(input string) *lexer {
@@ -495,6 +496,7 @@ func lexMultilineStringEscape(lx *lexer) stateFn {
 		lx.backup()
 		return lexStringEscapeHandler(lx, lexMultilineString, lexMultilineStringUnicode)
 	}
+	return nil
 }
 
 func lexStringEscapeHandler(lx *lexer, stringFn stateFn, unicodeFn stateFn) stateFn {
